@@ -1,0 +1,68 @@
+<style>
+  #sidebar {
+    min-width: 200px;
+    padding: var(--size-4);
+    padding-left: var(--size-2);
+    padding-right: var(--size-2);
+    header {
+      display: inline;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      padding-left: var(--size-2);
+      padding-right: var(--size-3);
+      button {
+        margin-top: auto;
+      }
+    }
+    ol {
+      width: 100%;
+      list-style-type: none;
+      li {
+        margin: var(--size-2) 0;
+        padding: var(--size-2);
+        border-radius: var(--radius-2);
+        color: var(--sand-1);
+        border: 1px solid transparent;
+        h3 {
+          white-space: nowrap;
+        }
+      }
+      li:hover {
+        cursor: pointer;
+        background: var(--gray-10);
+        border: 1px solid var(--gray-8);
+      }
+      li.selected, li.selected:hover {
+        background: var(--gray-9);
+        border: 1px solid var(--gray-8);
+        box-shadow: 0 0 var(--size-3) var(--size-2) var(--gray-10);
+      }
+    }
+  }
+</style>
+
+<header>
+  <h2>Months</h2>
+  <button @click="$store.book.addEntry()">Add</button>
+</header>
+<ol>
+  <template
+    x-data="{options: getOptions(), now: getNow()}"
+    x-for="entry in $store.book.sortedEntries()"
+    :key="entry.id"
+  >
+    <li
+      x-bind:class="($store.view == 'month') && (entry.id == $store.book.index.id) ? 'selected' : ''"
+      @click="$store.book.setIndex(entry.id), $store.view = 'month';"
+      x-data="{inflow: entry.sum('inflow'), outflow: entry.sum('outflow')}"
+    >
+      <h3 class="data" x-text="dateToString(entry.date)"></h3>
+      <small
+        x-data="{balance: inflow - outflow}"
+        x-bind:class="balance > 0 ? 'positive data' : balance < 0 ? 'negative data' : 'data'"
+        x-text="`${amountToString(balance, {signed: true})}`"
+      >
+      </small>
+    </li>
+  </template>
+</ol>

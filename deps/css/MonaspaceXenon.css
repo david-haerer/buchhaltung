@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-ExtraLight.woff") format("woff");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-SemiBold.woff") format("woff");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-ExtraBold.woff") format("woff");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-ExtraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Xenon";
+  src: url("/deps/fonts/MonaspaceXenon-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}

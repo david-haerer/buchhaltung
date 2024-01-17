@@ -1,0 +1,81 @@
+
+<style>
+
+.category {
+  background: var(--gray-9);
+  border: 1px solid var(--gray-8);
+  padding: var(--size-2) var(--size-3);
+  border-radius: var(--radius-2);
+  display: grid;
+  grid-gap: var(--size-3);
+  grid-template-columns: 1fr auto 120px 60px;
+}
+
+.category > h4 {
+  margin: auto 0;
+}
+
+.category > p {
+  padding-left: var(--size-1);
+  margin: auto 0;
+}
+
+.category > .name {
+  width: 100%;
+}
+
+.category > .value {
+  width: 100%;
+}
+
+.category > button {
+  text-align: right;
+}
+
+
+</style>
+
+
+<div
+  class="category"
+  x-data="{editN: false, editV: false, n: '', v: 0}"
+>
+  <h4 class="data" x-show="!editN" x-text="category.name"></h4>
+  <button x-show="!editN" @click="editN = true">Rename</button>
+  <input
+    x-show="editN"
+    x-bind:value="category.name"
+    x-model.fill="n"
+    class="input name"
+    placeholder="Category"
+    type="text"
+  />
+  <button
+    x-show="editN"
+    @click="$store.book.categories[flow][category.id].name = n, editN = false;"
+  >
+    Save
+  </button>
+  <p
+    class="data"
+    x-show="!editV"
+    x-text="amountToString($store.book.index[flow][category.id]?.value)"
+  ></p>
+  <button x-show="!editV" @click="editV = true">Edit</button>
+  <input
+    x-show="editV"
+    x-model="v"
+    x-bind:value="$store.book.index[flow][category.id]?.value ? $store.book.index[flow][category.id].value : 0"
+    class="input value"
+    placeholder="Value"
+    step="0.01"
+    min="0"
+    type="number"
+  />
+  <button
+    x-show="editV"
+    @click="$store.book.setCategory($store.book.index.id, flow, category.id, v), editV = false"
+  >
+    Save
+  </button>
+</div>

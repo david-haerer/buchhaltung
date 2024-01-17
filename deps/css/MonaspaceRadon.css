@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-ExtraLight.woff") format("woff");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-Light.woff") format("woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-Regular.woff") format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-Medium.woff") format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-SemiBold.woff") format("woff");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-ExtraBold.woff") format("woff");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-ExtraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-SemiBoldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Monaspace Radon";
+  src: url("/deps/fonts/MonaspaceRadon-ExtraBoldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}

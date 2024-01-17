@@ -1,0 +1,19 @@
+<style>
+  #header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: var(--size-3);
+    padding-top: var(--size-4);
+    h1 {
+      font-size: var(--font-size-4);
+    }
+    nav {
+      margin-top: auto;
+    }
+  }
+</style>
+
+<h1 class="data" x-text="$store.name"></h1>
+<nav>
+  <button @click="$store.view = 'settings'">Settings</button>
+</nav>

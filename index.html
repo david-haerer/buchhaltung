@@ -1,0 +1,44 @@
+<!doctype html>
+<html x-data>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icons" href="/icon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <script defer src="/main.js"></script>
+    <script defer src="/deps/js/alpine.js"></script>
+    <script defer src="/deps/js/htmx.js"></script>
+
+    <title>Buchhaltung</title>
+  </head>
+  <body>
+    <header id="header" hx-get="/comps/header.html" hx-trigger="load"></header>
+    <aside id="sidebar" hx-get="/comps/sidebar.html" hx-trigger="load"></aside>
+    <main
+      id="month"
+      class="view"
+      hx-get="/comps/month/index.html"
+      hx-trigger="load"
+      x-show="$store.view === 'month'"
+    ></main>
+    <main
+      id="settings"
+      class="view"
+      hx-get="/comps/settings/index.html"
+      hx-trigger="load"
+      x-show="$store.view === 'settings'"
+    ></main>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("name", "Finances");
+        Alpine.store("view", "settings");
+        Alpine.store("categories", categories);
+        Alpine.store("book", entries);
+      });
+    </script>
+  </body>
+</html>

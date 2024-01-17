@@ -1,0 +1,86 @@
+<style>
+  #month {
+    header {
+      display: grid;
+      grid-template-columns: 120px 80px 1fr auto;
+      grid-gap: var(--size-1);
+      h2 {
+        grid-column: 1/4;
+        font-size: var(--font-size-2);
+      }
+      button {
+        grid-column: 4;
+      }
+    }
+    section {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: var(--size-3);
+      h3 {
+        padding-top: var(--size-2);
+        font-size: var(--font-size-2);
+        font-weight: var(--font-weight-5);
+      }
+    }
+  }
+</style>
+
+<header x-data="{edit: false}">
+  <h2
+    x-show="!edit"
+    class="data"
+    x-text="dateToString($store.book.index.date)"
+  ></h2>
+  <button x-show="!edit" @click="edit=true">Edit</button>
+  <input
+    x-show="edit"
+    type="text"
+    x-ref="month"
+    x-bind:value="monthToString($store.book.index.date.month)"
+  />
+  <input
+    x-show="edit"
+    type="number"
+    x-ref="year"
+    x-bind:value="$store.book.index.date.year"
+  />
+  <button
+    x-show="edit"
+    @click="$store.book.setDate($store.book.index.id, getDate($refs.year.value, stringToMonth($refs.month.value))), edit=false;"
+  >
+    Save
+  </button>
+</header>
+
+<section id="inflow" x-data="{flow: 'inflow'}">
+  <h3>Income</h3>
+  <template x-for="category in $store.categories.inflow" :key="category.id">
+    <div
+      hx-get="/comps/month/category.html"
+      hx-trigger="load"
+      x-init="$nextTick(() => {htmx.process($el)})"
+    ></div>
+  </template>
+  <div
+    class="addCategory"
+    hx-get="/comps/month/add.html"
+    hx-trigger="load"
+    x-data="{category: '', value: 0}"
+  ></div>
+</section>
+<section id="outflow" x-data="{flow: 'outflow'}">
+  <h3>Expenses</h3>
+  <template x-for="category in $store.categories.outflow" :key="category.id">
+    <div
+      hx-get="/comps/month/category.html"
+      hx-trigger="load"
+      x-init="$nextTick(() => {htmx.process($el)})"
+    ></div>
+  </template>
+  <div
+    class="addCategory"
+    hx-get="/comps/month/add.html"
+    hx-trigger="load"
+    x-data="{category: '', value: 0}"
+  ></div>
+</section>

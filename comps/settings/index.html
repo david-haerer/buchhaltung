@@ -1,0 +1,37 @@
+<h2>Categories</h2>
+
+<h3>Income</h3>
+<section>
+  <template x-for="category in $store.categories.inflow" :key="category.id">
+    <p class="data" x-text="category.name"></p>
+    <button>Edit</button>
+  </template>
+</section>
+
+<h3>Expenses</h3>
+<section>
+  <template x-for="category in $store.categories.outflow" :key="category.id">
+    <p class="data" x-text="category.name"></p>
+    <button>Edit</button>
+    <button>foo</button>
+  </template>
+</section>
+
+<h2>File</h2>
+<section id="file">
+  <p>Open an existing file</p>
+  <form @submit.prevent="$store.app.submitData()">
+    <label class="button">
+      <input
+        x-on:change="$store.book.load($event)"
+        type="file"
+        name="book"
+        accept=".json"
+        required
+      />
+      Open
+    </label>
+  </form>
+  <p>Save to file</p>
+  <button>Save</button>
+</section>
