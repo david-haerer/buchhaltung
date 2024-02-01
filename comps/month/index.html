@@ -1,5 +1,8 @@
 <style>
   #month {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: var(--size-3);
     header {
       display: grid;
       grid-template-columns: 120px 80px 1fr auto;
@@ -18,8 +21,6 @@
       grid-gap: var(--size-3);
       h3 {
         padding-top: var(--size-2);
-        font-size: var(--font-size-2);
-        font-weight: var(--font-weight-5);
       }
     }
   }
@@ -53,12 +54,13 @@
 </header>
 
 <section id="inflow" x-data="{flow: 'inflow'}">
-  <h3>Income</h3>
+  <h3 class="h3">Income</h3>
   <template x-for="category in $store.categories.inflow" :key="category.id">
     <div
       hx-get="/comps/month/category.html"
       hx-trigger="load"
       x-init="$nextTick(() => {htmx.process($el)})"
+      class="category"
     ></div>
   </template>
   <div
@@ -68,13 +70,15 @@
     x-data="{category: '', value: 0}"
   ></div>
 </section>
+
 <section id="outflow" x-data="{flow: 'outflow'}">
-  <h3>Expenses</h3>
+  <h3 class="h3">Expenses</h3>
   <template x-for="category in $store.categories.outflow" :key="category.id">
     <div
       hx-get="/comps/month/category.html"
       hx-trigger="load"
       x-init="$nextTick(() => {htmx.process($el)})"
+      class="category"
     ></div>
   </template>
   <div
