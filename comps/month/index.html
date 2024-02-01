@@ -2,23 +2,30 @@
   #month {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: var(--size-3);
+    grid-gap: var(--size-4);
     header {
       display: grid;
       grid-template-columns: 120px 80px 1fr auto;
       grid-gap: var(--size-1);
+
       h2 {
-        grid-column: 1/4;
         font-size: var(--font-size-2);
       }
       button {
         grid-column: 4;
       }
     }
+    #inflow {
+      grid-row: 2;
+    }
+    #outflow {
+      grid-row: 3;
+    }
     section {
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: var(--size-3);
+
       h3 {
         padding-top: var(--size-2);
       }
