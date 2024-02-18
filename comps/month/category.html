@@ -1,9 +1,5 @@
 <style>
   #month .category > div {
-    background: var(--gray-9);
-    border: 1px solid var(--gray-8);
-    padding: var(--size-2) var(--size-3);
-    border-radius: var(--radius-2);
     display: grid;
     grid-gap: var(--size-3);
     grid-template-columns: 1fr auto 120px 60px;
@@ -26,33 +22,31 @@
   }
 </style>
 
-<div x-data="{editN: false, editV: false, n: '', v: 0}">
-  <h4 class="data" x-show="!editN" x-text="category.name"></h4>
-  <button x-show="!editN" @click="editN = true">Rename</button>
+<div class="card" x-data="{editName: false, editValue: false}">
+  <h4 class="data" x-show="!editName" x-text="category.name"></h4>
+  <button x-show="!editName" @click="editName = true">Rename</button>
   <input
-    x-show="editN"
+    x-show="editName"
     x-bind:value="category.name"
-    x-model.fill="n"
     class="input name"
     placeholder="Category"
     type="text"
   />
   <button
-    x-show="editN"
-    @click="$store.book.categories[flow][category.id].name = n, editN = false;"
+    x-show="editName"
+    @click="$store.categories[flow][category.id].name = $el.previousElementSibling.value, editName = false;"
   >
     Save
   </button>
   <p
     class="data"
-    x-show="!editV"
-    x-text="amountToString($store.book.index[flow][category.id]?.value)"
+    x-show="!editValue"
+    x-text="amountToString($store.entries.index[flow][category.id]?.value)"
   ></p>
-  <button x-show="!editV" @click="editV = true">Edit</button>
+  <button x-show="!editValue" @click="editValue = true">Edit</button>
   <input
-    x-show="editV"
-    x-model="v"
-    x-bind:value="$store.book.index[flow][category.id]?.value ? $store.book.index[flow][category.id].value : 0"
+    x-show="editValue"
+    x-bind:value="$store.entries.index[flow][category.id]?.value || 0"
     class="input value"
     placeholder="Value"
     step="0.01"
@@ -60,8 +54,8 @@
     type="number"
   />
   <button
-    x-show="editV"
-    @click="$store.book.setCategory($store.book.index.id, flow, category.id, v), editV = false"
+    x-show="editValue"
+    @click="$store.entries.setValue($store.entries.index.id, flow, category.id, Number($el.previousElementSibling.value)), editValue = false"
   >
     Save
   </button>

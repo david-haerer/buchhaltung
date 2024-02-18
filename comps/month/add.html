@@ -1,23 +1,18 @@
 <style>
-.addCategory {
-  background: var(--gray-9);
-  border: 1px solid var(--gray-8);
-  border-radius: var(--radius-2);
-  padding: var(--size-2) var(--size-3);
+.add {
   display: grid;
   grid-gap: var(--size-3);
   grid-template-columns: 1fr 120px 60px;
 }
 
-.addCategory > .value {
+.add > .value {
   width: 100%;
 }
 
-.addCategory > button {
+.add > button {
   text-align: right;
 }
 </style>
-
 
 <input
   x-model="category"
@@ -34,7 +29,7 @@
   type="number"
 />
 <button
-  @click="$store.book.addCategory($store.book.index.id, flow, category, value), category='', value='';"
+  @click="$store.entries.addCategory($store.entries.index.id, flow, category, value), category='', value='';"
 >
   Add
 </button>
