@@ -24,24 +24,26 @@ const entries = {
   init() {
     const categories = Alpine.store("categories");
 
-    const incomeId = categories.add("inflow", "Income");
+    const incomeId = categories.add("inflow", "Kindergeld");
     const rentId = categories.add("outflow", "Rent");
     const savingsId = categories.add("outflow", "Savings");
 
-    const id1 = this.addEntry();
-    this.setCategory(id1, "inflow", incomeId, 1000);
-    this.setCategory(id1, "outflow", rentId, 600);
-    this.setCategory(id1, "outflow", savingsId, 500);
+    const id1 = this.add();
+    this.setValue(id1, "inflow", incomeId, 1000);
+    this.setValue(id1, "outflow", rentId, 600);
+    this.setValue(id1, "outflow", savingsId, 500);
 
-    const id2 = this.addEntry();
-    this.setCategory(id2, "inflow", incomeId, 1000);
-    this.setCategory(id2, "outflow", rentId, 600);
-    this.setCategory(id2, "outflow", savingsId, 300);
+    const id2 = this.add();
+    this.setValue(id2, "inflow", incomeId, 1000);
+    this.setValue(id2, "outflow", rentId, 600);
+    this.setValue(id2, "outflow", savingsId, 300);
 
-    const id3 = this.addEntry();
-    this.setCategory(id3, "inflow", incomeId, 1000);
-    this.setCategory(id3, "outflow", rentId, 600);
-    this.setCategory(id3, "outflow", savingsId, 400);
+    const id3 = this.add();
+    this.setValue(id3, "inflow", incomeId, 1000);
+    this.setValue(id3, "outflow", rentId, 600);
+    this.setValue(id3, "outflow", savingsId, 400);
+
+    const id4 = this.add();
 
     this.setIndex(id1);
   },
@@ -61,6 +63,17 @@ const entries = {
   setIndex(id) {
     this.index = this.entries[id];
   },
+  del(id) {
+    if (
+      this.entries[id].sum("inflow") !== 0 ||
+      this.entries[id].sum("outflow") !== 0
+    )
+      return false;
+    if (this.index.id === id)
+      this.index = Object.values(this.entries).filter((e) => e.id !== id)[0];
+    delete this.entries[id];
+    return true;
+  },
   foo(data) {
     console.log(data);
   },
@@ -70,23 +83,10 @@ const entries = {
     reader.onload = function (e) {
       const content = e.target.result;
       const json = JSON.parse(content);
-      Alpine.store("book").foo(json);
+      Alpine.store("entries").foo(json);
     };
     reader.readAsText(file);
     console.log(json);
-  },
-  setEntryDate(id, date) {
-    for (const entry of Object.values(this.entries)) {
-      if (
-        entry.id !== id &&
-        entry.date &&
-        entry.date.year === date.year &&
-        entry.date.month === date.month
-      )
-        return false;
-    }
-    this.entries[id].date = date;
-    return true;
   },
   sortedEntries() {
     return Object.values(this.entries).sort((a, b) => {
@@ -96,7 +96,7 @@ const entries = {
       return 0;
     });
   },
-  addEntry() {
+  add() {
     const id = Object.keys(this.entries).length;
     this.entries[id] = new Entry(id);
     this.setIndex(id);
@@ -110,31 +110,14 @@ const entries = {
     }
     return id;
   },
-  addCategory(id, flow, categoryName, value) {
-    if (
-      Object.values(this.categories[flow])
-        .map((category) => category.name)
-        .includes(categoryName)
-    )
-      return false;
-
-    const categoryId = Object.keys(this.categories[flow]).length;
-    this.categories[flow][categoryId] = {
-      id: categoryId,
-      name: categoryName,
-    };
+  setValue(id, flow, categoryId, value) {
     const entry = this.entries[id];
     entry[flow][categoryId] = {
       id: categoryId,
       value,
     };
-    return true;
-  },
-  setCategory(id, flow, categoryId, value) {
-    this.entries[id][flow][categoryId] = {
-      id: categoryId,
-      value,
-    };
+    entry.sums[flow] = entry.sum(flow);
+    entry.balance = entry.sums.inflow - entry.sums.outflow;
   },
 };
 
@@ -252,4 +235,9 @@ function Entry(id) {
       .map((category) => category.value)
       .reduce((v1, v2) => v1 + v2, 0);
   };
+  this.sums = {
+    inflow: 0,
+    outflow: 0,
+  };
+  this.balance = 0;
 }
