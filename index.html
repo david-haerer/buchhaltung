@@ -1,5 +1,5 @@
 <!doctype html>
-<html x-data>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,13 +19,13 @@
           display: grid;
           grid-template-rows: auto 1fr;
           grid-template-columns: auto 1fr;
-          background: var(--gray-11);
+          background: var(--gray-10);
           #header {
             grid-column: 1/3;
           }
           main {
             height: 100%;
-            background: var(--gray-10);
+            background: var(--gray-11);
             border: 1px solid var(--gray-8);
             border-top-left-radius: var(--radius-3);
             padding: var(--size-4);
@@ -34,7 +34,7 @@
       }
     </style>
   </head>
-  <body>
+  <body x-data>
     <header id="header" hx-get="/comps/header.html" hx-trigger="load"></header>
     <aside id="sidebar" hx-get="/comps/sidebar.html" hx-trigger="load"></aside>
     <main>
@@ -58,7 +58,7 @@
         Alpine.store("name", "Finances");
         Alpine.store("view", "month");
         Alpine.store("categories", categories);
-        Alpine.store("book", entries);
+        Alpine.store("entries", entries);
       });
     </script>
   </body>
