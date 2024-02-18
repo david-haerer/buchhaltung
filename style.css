@@ -33,6 +33,15 @@
   color: var(--sand-1);
 }
 
+.card {
+  background: var(--gray-9);
+  border: 1px solid var(--gray-8);
+  padding: calc(var(--size-1) + var(--size-1))
+    calc(var(--size-2) + var(--size-1));
+  border-radius: var(--radius-2);
+  box-shadow: 0 0 var(--size-1) 0 var(--gray-10);
+}
+
 .positive {
   color: var(--green-5);
 }
@@ -68,6 +77,15 @@ input[type="number"] {
 input[type="text"]:focus,
 input[type="number"]:focus {
   outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 button,
