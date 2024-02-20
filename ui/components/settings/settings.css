@@ -34,7 +34,7 @@
   <h3 class="h3">Income</h3>
   <template x-for="category in $store.categories.inflow" :key="category.id">
     <div
-      hx-get="/comps/settings/category.html"
+      hx-get="/components/settings/category.html"
       hx-trigger="load"
       x-init="$nextTick(() => {htmx.process($el)})"
       x-data="{flow: 'inflow'}"
@@ -44,7 +44,7 @@
   <h3 class="h3">Expenses</h3>
   <template x-for="category in $store.categories.outflow" :key="category.id">
     <div
-      hx-get="/comps/settings/category.html"
+      hx-get="/components/settings/category.html"
       hx-trigger="load"
       x-init="$nextTick(() => {htmx.process($el)})"
       x-data="{flow: 'outflow'}"

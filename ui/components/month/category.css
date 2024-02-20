@@ -1,0 +1,26 @@
+#month .category > div {
+  display: grid;
+  grid-gap: var(--size-3);
+  grid-template-columns: 1fr auto 120px 60px;
+}
+
+#month .category > div h4 {
+  margin: auto 0;
+}
+
+#month .category > div p {
+  padding-left: var(--size-1);
+  margin: auto 0;
+}
+
+#month .category > div .name {
+  width: 100%;
+}
+
+#month .category > div .value {
+  width: 100%;
+}
+
+#month .category > div button {
+  text-align: right;
+}

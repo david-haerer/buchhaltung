@@ -1,0 +1,13 @@
+.add {
+  display: grid;
+  grid-gap: var(--size-3);
+  grid-template-columns: 1fr 120px 60px;
+}
+
+.add > .value {
+  width: 100%;
+}
+
+.add > button {
+  text-align: right;
+}

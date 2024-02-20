@@ -1,0 +1,48 @@
+#sidebar {
+  min-width: 220px;
+  padding: var(--size-4);
+  padding-left: var(--size-2);
+  padding-right: var(--size-3);
+}
+
+#sidebar header {
+  display: inline;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 0 var(--size-2);
+}
+
+#sidebar header button {
+  margin-top: auto;
+}
+
+#sidebar ol {
+  width: 100%;
+  list-style-type: none;
+}
+
+#sidebar ol li {
+  margin: var(--size-2) 0;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr auto;
+  grid-gap: 0 var(--size-2);
+}
+
+#sidebar ol li small {
+  grid-row: 2;
+}
+
+#sidebar ol li:hover {
+  cursor: pointer;
+}
+
+#sidebar ol li:not(.selected) {
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+#sidebar ol li:not(.selected):hover {
+  background: var(--gray-10);
+  border: 1px solid var(--gray-8);
+}

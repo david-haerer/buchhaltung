@@ -1,0 +1,15 @@
+#header {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr auto;
+  padding: var(--size-3);
+  padding-top: var(--size-4);
+}
+
+#header h1 {
+  font-size: var(--font-size-4);
+}
+
+#header nav {
+  margin-top: auto;
+}
