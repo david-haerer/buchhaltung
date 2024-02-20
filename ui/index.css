@@ -1,7 +1,16 @@
-@import "/deps/css/open-props.css";
-@import "/deps/css/FiraSans.css";
-@import "/deps/css/MonaspaceRadon.css";
-@import "/deps/css/MonaspaceXenon.css";
+@import "/dependencies/css/open-props.css";
+@import "/dependencies/css/FiraSans.css";
+@import "/dependencies/css/MonaspaceRadon.css";
+@import "/dependencies/css/MonaspaceXenon.css";
+
+@import "/components/header.css";
+@import "/components/sidebar.css";
+@import "/components/month/month.css";
+@import "/components/month/category.css";
+@import "/components/month/add.css";
+@import "/components/settings/settings.css";
+@import "/components/settings/category.css";
+@import "/components/settings/add.css";
 
 *,
 *::before,
@@ -97,4 +106,30 @@ button,
 button:hover,
 .button:hover {
   cursor: pointer;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+ 
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
+
+  background: var(--gray-10);
+  
+  #header {
+    grid-column: 1 / 3;
+  }
+}
+
+main {
+  height: 100%;
+  background: var(--gray-11);
+  border: 1px solid var(--gray-8);
+  border-top-left-radius: var(--radius-3);
+  padding: var(--size-4);
 }
