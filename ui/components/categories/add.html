@@ -1,0 +1,7 @@
+<input
+  class="input category"
+  placeholder="New Category"
+  type="text"
+  x-ref="name"
+/>
+<button @click="$store.categories.add(flow, $refs.name.value), $refs.name.value = ''">Add</button>

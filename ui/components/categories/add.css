@@ -1,0 +1,13 @@
+#categories .add {
+  display: grid;
+  grid-gap: var(--size-3);
+  grid-template-columns: 1fr 60px;
+}
+
+#categories .add > .value {
+  width: 100%;
+}
+
+#categories .add > button {
+  text-align: right;
+}

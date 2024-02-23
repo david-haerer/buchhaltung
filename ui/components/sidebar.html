@@ -11,6 +11,7 @@
     <li
       x-bind:class="($store.view == 'month') && (entry.id == $store.entries.index.id) ? 'card selected' : 'card'"
       @click="$store.entries.setIndex(entry.id), $store.view = 'month';"
+      tabindex="0"
     >
       <h3 class="data" x-text="dateToString(entry.date)"></h3>
       <button
@@ -18,7 +19,7 @@
         x-show="entry.sums['inflow'] === 0 && entry.sums['outflow'] === 0"
         @click="$store.entries.del(entry.id)"
       >
-        X
+        ⨯
       </button>
       <small
         x-show="entry.sums['inflow'] !== 0 | entry.sums['outflow'] !== 0"

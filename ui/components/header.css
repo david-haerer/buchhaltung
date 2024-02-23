@@ -12,4 +12,7 @@
 
 #header nav {
   margin-top: auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: var(--size-3);
 }

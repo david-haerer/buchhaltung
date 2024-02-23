@@ -1,0 +1,34 @@
+<h2 class="h2">Categories</h2>
+
+<section id="inflow">
+  <h3 class="h3">Income</h3>
+  <template x-for="category in $store.categories.inflow" :key="category.id">
+    <div
+      hx-get="/components/categories/category.html"
+      hx-trigger="load"
+      x-init="$nextTick(() => {htmx.process($el)})"
+      x-data="{flow: 'inflow'}"
+      class="category"
+    ></div>
+  </template>
+  <div
+    hx-get="/components/categories/add.html"
+    hx-trigger="load"
+    x-init="$nextTick(() => {htmx.process($el)})"
+    x-data="{flow: 'inflow'}"
+    class="card add"
+  ></div>
+</section>
+
+<section id="ouflow">
+  <h3 class="h3">Expenses</h3>
+  <template x-for="category in $store.categories.outflow" :key="category.id">
+    <div
+      hx-get="/components/categories/category.html"
+      hx-trigger="load"
+      x-init="$nextTick(() => {htmx.process($el)})"
+      x-data="{flow: 'outflow'}"
+      class="category"
+    ></div>
+  </template>
+</section>

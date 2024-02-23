@@ -1,11 +1,3 @@
-<style>
-  #settings .category > div {
-    display: grid;
-    grid-gap: var(--size-3);
-    grid-template-columns: 1fr 60px;
-  }
-</style>
-
 <div class="card" x-data="{edit: false}">
   <h4 class="data" x-show="!edit" x-text="category.name"></h4>
   <button x-show="!edit" @click="edit = true">Rename</button>

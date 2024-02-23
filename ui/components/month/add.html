@@ -1,19 +1,19 @@
 <input
-  x-model="category"
+  x-ref="category"
   class="input category"
-  placeholder="Category"
+  placeholder="New Category"
   type="text"
 />
 <input
-  x-model="value"
+  x-ref="value"
   class="input value"
-  placeholder="Value"
   step="0.01"
   min="0"
   type="number"
+  placeholder="0"
 />
 <button
-  @click="$store.entries.addCategory($store.entries.index.id, flow, category, value), category='', value='';"
+  @click="addCategoryWithValue(flow, $refs.category.value, $refs.value.value), $refs.category.value = '', $refs.value.value = '';"
 >
   Add
 </button>
