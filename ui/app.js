@@ -3,6 +3,7 @@ const categories = {
   outflow: {},
   init() {},
   add(flow, name) {
+    if (!name) return false;
     if (
       Object.values(this[flow])
         .map((category) => category.name)
@@ -29,19 +30,22 @@ const entries = {
     const savingsId = categories.add("outflow", "Savings");
 
     const id1 = this.add();
-    this.setValue(id1, "inflow", incomeId, 1000);
-    this.setValue(id1, "outflow", rentId, 600);
-    this.setValue(id1, "outflow", savingsId, 500);
+    this.setIndex(id1);
+    this.setValue("inflow", incomeId, 1000);
+    this.setValue("outflow", rentId, 600);
+    this.setValue("outflow", savingsId, 500);
 
     const id2 = this.add();
-    this.setValue(id2, "inflow", incomeId, 1000);
-    this.setValue(id2, "outflow", rentId, 600);
-    this.setValue(id2, "outflow", savingsId, 300);
+    this.setIndex(id2);
+    this.setValue("inflow", incomeId, 1000);
+    this.setValue("outflow", rentId, 600);
+    this.setValue("outflow", savingsId, 300);
 
     const id3 = this.add();
-    this.setValue(id3, "inflow", incomeId, 1000);
-    this.setValue(id3, "outflow", rentId, 600);
-    this.setValue(id3, "outflow", savingsId, 400);
+    this.setIndex(id3);
+    this.setValue("inflow", incomeId, 1000);
+    this.setValue("outflow", rentId, 600);
+    this.setValue("outflow", savingsId, 400);
 
     const id4 = this.add();
 
@@ -110,14 +114,15 @@ const entries = {
     }
     return id;
   },
-  setValue(id, flow, categoryId, value) {
-    const entry = this.entries[id];
-    entry[flow][categoryId] = {
+  setValue(flow, categoryId, value) {
+    if (isNaN(value)) return false;
+    value = Number(value);
+    this.index[flow][categoryId] = {
       id: categoryId,
       value,
     };
-    entry.sums[flow] = entry.sum(flow);
-    entry.balance = entry.sums.inflow - entry.sums.outflow;
+    this.index.sums[flow] = this.index.sum(flow);
+    this.index.balance = this.index.sums.inflow - this.index.sums.outflow;
   },
 };
 
@@ -240,4 +245,12 @@ function Entry(id) {
     outflow: 0,
   };
   this.balance = 0;
+}
+
+function addCategoryWithValue(flow, name, value) {
+  if (isNaN(value)) return false;
+  const categories = Alpine.store("categories");
+  const categoryId = categories.add(flow, name);
+  const entries = Alpine.store("entries");
+  entries.setValue(flow, categoryId, value);
 }

@@ -6,7 +6,7 @@
     <link rel="icons" href="/icon/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/style.css" />
     <script defer src="/app.js"></script>
     <script defer src="/dependencies/js/alpine.js"></script>
     <script defer src="/dependencies/js/htmx.js"></script>
@@ -32,9 +32,16 @@
         x-show="$store.view === 'month'"
       ></article>
       <article
+        id="categories"
+        class="view"
+        hx-get="/components/categories/categories.html"
+        hx-trigger="load"
+        x-show="$store.view === 'categories'"
+      ></article>
+      <article
         id="settings"
         class="view"
-        hx-get="/components/settings/settings.html"
+        hx-get="/components/settings.html"
         hx-trigger="load"
         x-show="$store.view === 'settings'"
       ></article>
