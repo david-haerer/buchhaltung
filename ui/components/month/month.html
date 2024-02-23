@@ -1,7 +1,7 @@
 <header x-data="{edit: false}">
   <h2
     x-show="!edit"
-    class="data"
+    class="h2 data"
     x-text="dateToString($store.entries.index.date)"
   ></h2>
   <button x-show="!edit" @click="edit=true">Edit</button>

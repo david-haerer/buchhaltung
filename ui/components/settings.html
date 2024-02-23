@@ -1,18 +1,66 @@
+<h2 class="h2">Settings</h2>
+
+<section id="name">
+  <h3 class="h3">Name</h3>
+  <div class="card" x-data="{edit: false}">
+    <h4 class="data" x-show="!edit" x-text="$store.name"></h4>
+    <button x-show="!edit" @click="edit = true">Rename</button>
+    <input
+      x-show="edit"
+      x-bind:value="$store.name"
+      x-ref="name"
+      placeholder="Name"
+      type="text"
+    />
+    <button
+      x-show="edit"
+      @click="$store.name = $refs.name.value, edit = false;"
+    >
+      Save
+    </button>
+  </div>
+</section>
+
+<section id="currency">
+  <h3 class="h3">Currency</h3>
+  <div class="card" x-data="{edit: false}">
+    <h4 class="data" x-show="!edit" x-text="$store.currency"></h4>
+    <button x-show="!edit" @click="edit = true">Change</button>
+    <input
+      x-show="edit"
+      x-bind:value="$store.currency"
+      x-ref="currency"
+      placeholder="Name"
+      type="text"
+    />
+    <button
+      x-show="edit"
+      @click="$store.currency = $refs.currency.value, edit = false;"
+    >
+      Save
+    </button>
+  </div>
+</section>
+
 <section id="file">
-  <h2 class="h2">File</h2>
-  <p>Open an existing file</p>
-  <form @submit.prevent="$store.app.submitData()">
-    <label class="button">
-      <input
-        x-on:change="$store.book.load($event)"
-        type="file"
-        name="book"
-        accept=".json"
-        required
-      />
-      Open
-    </label>
-  </form>
-  <p>Save to file</p>
-  <button>Save</button>
+  <h3 class="h3">File</h3>
+  <div class="card">
+    <p>Open an existing file</p>
+    <form @submit.prevent="$store.app.submitData()">
+      <label class="button">
+        <input
+          x-on:change="$store.book.load($event)"
+          type="file"
+          name="book"
+          accept=".json"
+          required
+        />
+        Open
+      </label>
+    </form>
+  </div>
+  <div class="card">
+    <p>Save to file</p>
+    <button>Save</button>
+  </div>
 </section>

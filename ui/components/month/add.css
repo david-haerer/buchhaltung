@@ -2,12 +2,28 @@
   display: grid;
   grid-gap: var(--size-3);
   grid-template-columns: 1fr 120px 60px;
+  height: var(--size-8);
 }
 
-#month .add > .value {
-  width: 100%;
+#month .add .value {
+  width: 80px;
+  text-align: right;
 }
 
-#month .add > button {
+#month .add span {
+  text-align: right;
+  margin-top: auto;
+}
+
+#month .add .currency {
+  margin-top: auto;
+  border-bottom: var(--input-border);
+}
+
+#month .add .currency .input.value {
+  border-bottom: none;
+}
+
+#month .add button {
   text-align: right;
 }

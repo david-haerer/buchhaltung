@@ -11,7 +11,7 @@
     <li
       x-bind:class="($store.view == 'month') && (entry.id == $store.entries.index.id) ? 'card selected' : 'card'"
       @click="$store.entries.setIndex(entry.id), $store.view = 'month';"
-      tabindex="0"
+      tabindex="0 "
     >
       <h3 class="data" x-text="dateToString(entry.date)"></h3>
       <button

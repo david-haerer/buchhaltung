@@ -2,4 +2,13 @@
   display: grid;
   grid-gap: var(--size-3);
   grid-template-columns: 1fr 60px;
+  height: var(--size-8);
+}
+
+#categories .category > div h4 {
+  margin: auto 0;
+}
+
+#categories .category > div button {
+  text-align: right;
 }

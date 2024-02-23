@@ -4,14 +4,17 @@
   placeholder="New Category"
   type="text"
 />
-<input
-  x-ref="value"
-  class="input value"
-  step="0.01"
-  min="0"
-  type="number"
-  placeholder="0"
-/>
+<span class="currency">
+    <input
+      x-ref="value"
+      class="input value"
+      step="0.01"
+      min="0"
+      type="number"
+      placeholder="0"
+    />
+  <span class="data" x-text="$store.currency"></span>
+</span>
 <button
   @click="addCategoryWithValue(flow, $refs.category.value, $refs.value.value), $refs.category.value = '', $refs.value.value = '';"
 >

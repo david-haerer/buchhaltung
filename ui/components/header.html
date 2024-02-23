@@ -1,5 +1,5 @@
 <h1 class="data" x-text="$store.name"></h1>
 <nav>
-  <button @click="$store.view = 'categories'">Categories</button>
-  <button @click="$store.view = 'settings'">Settings</button>
+  <button x-bind:class="($store.view == 'categories') ? 'card selected' : 'card'" @click="$store.view = 'categories'">Categories</button>
+  <button x-bind:class="($store.view == 'settings') ? 'card selected' : 'card'" @click="$store.view = 'settings'">Settings</button>
 </nav>

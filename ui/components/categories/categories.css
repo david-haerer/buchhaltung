@@ -1,12 +1,16 @@
 #categories {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: var(--size-5);
+  grid-gap: var(--size-4);
+}
+
+#categories h2 {
+  height: var(--size-5);
 }
 
 #categories section {
   display: grid;
-  grid-gap: var(--size-2) var(--size-1);
+  grid-gap: var(--size-3);
   grid-template-columns: 1fr;
 }
 

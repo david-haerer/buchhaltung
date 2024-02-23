@@ -31,4 +31,11 @@
       class="category"
     ></div>
   </template>
+  <div
+    hx-get="/components/categories/add.html"
+    hx-trigger="load"
+    x-init="$nextTick(() => {htmx.process($el)})"
+    x-data="{flow: 'outflow'}"
+    class="card add"
+  ></div>
 </section>

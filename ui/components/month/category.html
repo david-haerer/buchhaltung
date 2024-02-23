@@ -14,24 +14,26 @@
   >
     Save
   </button>
-  <p
+  <span
     class="data"
     x-show="!editValue"
     x-text="amountToString($store.entries.index[flow][category.id]?.value)"
-  ></p>
+  ></span>
   <button x-show="!editValue" @click="editValue = true">Edit</button>
-  <input
-    x-show="editValue"
-    x-bind:value="$store.entries.index[flow][category.id]?.value || 0"
-    class="input value"
-    placeholder="Value"
-    step="0.01"
-    min="0"
-    type="number"
-  />
+  <span x-show="editValue" class="currency">
+      <input
+        x-bind:value="$store.entries.index[flow][category.id]?.value || 0"
+        class="input value"
+        placeholder="Value"
+        step="0.01"
+        min="0"
+        type="number"
+      />
+    <span class="data" x-text="$store.currency"></span>
+  </span>
   <button
     x-show="editValue"
-    @click="$store.entries.setValue($store.entries.index.id, flow, category.id, Number($el.previousElementSibling.value)), editValue = false"
+    @click="$store.entries.setValue(flow, category.id, Number($el.previousElementSibling.value)), editValue = false"
   >
     Save
   </button>
