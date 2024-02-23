@@ -227,7 +227,8 @@ function amountToString(amount, options = { cents: false, signed: false }) {
   if (signed && amount < 0) (sign = "- "), (amount = -amount);
   if (signed && amount === 0) sign = "± ";
   const digits = cents ? 2 : 0;
-  return `${sign}${Number(amount).toFixed(digits)} €`;
+  const currency = Alpine.store("currency");
+  return `${sign}${Number(amount).toFixed(digits)} ${currency}`;
 }
 
 function Entry(id) {

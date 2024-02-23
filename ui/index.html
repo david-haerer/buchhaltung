@@ -49,6 +49,7 @@
     <script>
       document.addEventListener("alpine:init", () => {
         Alpine.store("name", "Finances");
+        Alpine.store("currency", "€");
         Alpine.store("view", "month");
         Alpine.store("categories", categories);
         Alpine.store("entries", entries);
